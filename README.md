@@ -1,4 +1,4 @@
-# BasicTkinterCalculator (Calculadora Básica en Python con Tkinter)
+# BasicTkinterCalculator
 
 ## Descripción
 Este es un proyecto de una calculadora básica desarrollada en Python utilizando la biblioteca Tkinter para la interfaz gráfica de usuario. La calculadora permite realizar operaciones matemáticas básicas como suma, resta, multiplicación y división.
@@ -14,11 +14,11 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
 1. Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [python.org](https://www.python.org/downloads/).
 2. Clona este repositorio en tu máquina local:
     ```bash
-    git clone https://github.com/tu_usuario/calculadora-basica.git
+    git clone https://github.com/tu_usuario/BasicTkinterCalculator.git
     ```
 3. Navega al directorio del proyecto:
     ```bash
-    cd calculadora-basica
+    cd BasicTkinterCalculator
     ```
 4. Ejecuta el archivo principal de la calculadora:
     ```bash
@@ -29,7 +29,7 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
 1. Asegúrate de tener Python instalado en tu sistema.
 2. Navega al directorio del proyecto:
     ```bash
-    cd calculadora-basica
+    cd BasicTkinterCalculator
     ```
 3. Ejecuta el archivo de pruebas con el comando:
     ```bash
@@ -43,4 +43,3 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
 - Axel Felix (#1106662) - [Notengonombredisponible](https://github.com/Notengonombredisponible)
 - Andres Taveras (#1107975) - [FandresT101](https://github.com/FandresT101)
 - Angel Soriano (#1107555) - [LoyaKnight](https://github.com/LoyaKnight)
-
