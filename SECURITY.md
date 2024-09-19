@@ -1,30 +1,28 @@
-# Security Policy
+# Política de seguridad
 
-## Supported Versions
+## Versiones Soportadas
 
-The following table shows the version of the “BasicTkinterCalculator” project that is currently receiving security updates.
+La siguiente tabla muestra la versión del proyecto «BasicTkinterCalculator» que actualmente está recibiendo actualizaciones de seguridad.
 
-| Version | Support |
+| Versión | Soporte |
 | -------- | --------------------- |
-| 1.0.x | :white_check_mark: |
+| 1.0.x :white_check_mark: |
 
-**Note:** Only version 1.0.x is receiving active support. Be sure to keep your project up to date to ensure security.
+**Nota:** Sólo la versión 1.0.x está recibiendo soporte activo. Asegúrese de mantener su proyecto actualizado para garantizar la seguridad.
 
-## Report a Vulnerability
+## Informar de una vulnerabilidad
 
-If you find a vulnerability in your project, follow the steps below to report it:
+Si encuentra una vulnerabilidad en su proyecto, siga los siguientes pasos para informar de ella:
 
-1. **Send an email** to [email@example.com] with details of the vulnerability. Include:
-   - Detailed description of the problem.
-   - Steps to reproduce the problem.
-   - Potential impact of the flaw.
+1. **Envía un correo electrónico** a [1107535@est.intec.edu.com] con los detalles de la vulnerabilidad. Incluye:
+   - Descripción detallada del problema.
+   - Pasos para reproducir el problema.
+   - Impacto potencial del fallo.
 
-2. **Response times:** Expect a response within 5 business days from receipt of the report.
+2. **Tiempo de respuesta:** Espere una respuesta en un plazo de 5 días hábiles desde la recepción del informe.
 
-3. **Review process:**
-   - If the vulnerability is confirmed, we will work on a patch and notify you of the progress.
-   - If rejected, we will provide you with a detailed justification.
+3. **Proceso de revisión:**
+   - Si se confirma la vulnerabilidad, trabajaremos en un parche y le notificaremos el progreso.
+   - Si se rechaza, le proporcionaremos una justificación detallada.
 
-We thank the community for their help in keeping this project safe for everyone.
-
-Translated with DeepL.com (free version)
+Agradecemos a la comunidad su ayuda para mantener este proyecto seguro para todos.
