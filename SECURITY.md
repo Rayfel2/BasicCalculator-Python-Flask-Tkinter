@@ -6,7 +6,7 @@ La siguiente tabla muestra la versión del proyecto «BasicTkinterCalculator» q
 
 | Versión | Soporte |
 | -------- | --------------------- |
-| 1.0.x :white_check_mark: |
+| 1.0.x | :white_check_mark: |
 
 **Nota:** Sólo la versión 1.0.x está recibiendo soporte activo. Asegúrese de mantener su proyecto actualizado para garantizar la seguridad.
 
