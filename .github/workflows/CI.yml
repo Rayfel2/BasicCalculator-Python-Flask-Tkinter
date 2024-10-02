@@ -1,1 +1,6 @@
 name: CI QA Workflow (BasicTkinterCalculator)
+
+on:
+  pull_request:
+    branches:
+      - qa
