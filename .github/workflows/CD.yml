@@ -1,0 +1,49 @@
+name: CD Production Workflow (BasicTkinterCalculator)
+
+# Se activa en push o pull request a la rama main o prod
+on:
+  push:
+    branches:
+      - main   # Puedes cambiarlo a "prod" si usas una rama de producción
+  pull_request:
+    branches:
+      - main   # Se ejecuta en PR a la rama main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        . venv/bin/activate
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        . venv/bin/activate
+        python -m unittest discover
+
+    - name: Deploy to server
+      if: success()  # Desplegar solo si los tests pasan
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}  # Si es necesario
+        script: |
+          cd /ruta/donde/esta/la/aplicacion
+          git pull origin main   # O prod, dependiendo de tu rama
+          source venv/bin/activate
+          pip install -r requirements.txt
+          systemctl restart app   # Cambia esto según cómo ejecutes tu aplicación
