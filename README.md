@@ -33,7 +33,7 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     ```
 3. Ejecuta el archivo de pruebas con el comando:
     ```bash
-    python -m unittest test_calculadora.py
+    python -m unittest test_calculator.py
     ```
 
 ## Contribuidores
