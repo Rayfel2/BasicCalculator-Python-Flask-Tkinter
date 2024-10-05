@@ -23,10 +23,12 @@ jobs:
           python -m pip install --upgrade pip  # Actualiza 'pip'
           pip install pyinstaller  # Instala PyInstaller para empaquetar la app
 
-      - name: Run unit tests  # Ejecuta las pruebas unitarias
+      - name: Run Xvfb and unit tests  # Ejecutar Xvfb y las pruebas unitarias
         run: |
+          Xvfb :99 -screen 0 1024x768x24 &
+          export DISPLAY=:99
           python -m unittest test_calculator.py  # Ejecuta las pruebas unitarias en el archivo 'test_calculator.py'
-        continue-on-error: false  # Si las pruebas fallan, este paso también fallará y detendrá el proceso de CI
+        continue-on-error: false
 
       - name: Upload test results on failure  # Manejo de fallos en las pruebas
         if: failure()  # Solo se ejecuta si las pruebas fallan
@@ -40,7 +42,7 @@ jobs:
         if: success()  # Solo se ejecuta si los pasos anteriores fueron exitosos
 
       - name: Upload executable  # Subir el ejecutable como artefacto para descargar
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: calculator-executable
           path: dist/TkinterCalculadora  # Ruta al ejecutable generado por PyInstaller
