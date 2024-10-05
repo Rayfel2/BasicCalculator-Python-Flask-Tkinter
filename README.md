@@ -36,18 +36,18 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     python -m unittest test_calculator.py
     ```
 
-# BasicTkinterCalculator - CI QA Workflow
+# CI QA Workflow - BasicTkinterCalculator
 Este repositorio implementa un flujo de trabajo de integración continua (CI) para verificar la calidad del código mediante la ejecución de pruebas unitarias en cada pull request hacia la rama qa. El objetivo es asegurar que el código funciona correctamente antes de ser integrado en el entorno de calidad (QA).
 
 # CI QA Workflow
 ## Descripción
 El flujo de trabajo se ejecuta automáticamente cada vez que se crea o actualiza un pull request hacia la rama qa. Durante la ejecución, el sistema realiza las siguientes tareas:
 
-Descarga el código del repositorio.
-Configura el entorno de Python con la versión 3.8.
-Instala y actualiza las dependencias necesarias.
-Ejecuta las pruebas unitarias para verificar la funcionalidad del código.
-Si las pruebas fallan, sube los resultados de las fallas.
+1. Descarga el código del repositorio.
+2. Configura el entorno de Python con la versión 3.8.
+3. Instala y actualiza las dependencias necesarias.
+4. Ejecuta las pruebas unitarias para verificar que el código es funcional.
+5. Si las pruebas son exitosas, despliega la aplicación en el servidor de producción.
 
 ## Configuración del Flujo de Trabajo
 El flujo de trabajo de integración continua (CI) se activa cuando se crea o actualiza un pull request hacia la rama qa. El proceso se ejecuta en un entorno de Ubuntu y consta de varios pasos: primero, se realiza la verificación del código fuente del repositorio; luego, se configura el entorno de Python con la versión 3.8. A continuación, se instalan las dependencias necesarias, y se ejecutan pruebas unitarias para verificar el correcto funcionamiento de la aplicación. Si alguna de las pruebas falla, se genera un mensaje indicando que las pruebas no pasaron, lo que permite a los desarrolladores identificar y solucionar problemas antes de fusionar los cambios en la rama principal.
