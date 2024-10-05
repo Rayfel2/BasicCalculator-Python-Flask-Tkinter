@@ -86,7 +86,9 @@ jobs:
           echo "Las pruebas fallaron. Subiendo los resultados..."
 
 
-````  
+````
+
+## Para el CD se hizo un ejecutable.
 ## Detalles Técnicos
 Plataforma: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
 Entorno Python: Se utiliza Python 3.8 para la ejecución del código.
