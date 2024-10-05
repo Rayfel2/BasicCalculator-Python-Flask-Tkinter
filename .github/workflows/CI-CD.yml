@@ -40,7 +40,7 @@ jobs:
         if: success()  # Solo se ejecuta si los pasos anteriores fueron exitosos
 
       - name: Upload executable  # Subir el ejecutable como artefacto para descargar
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: calculator-executable
           path: dist/TkinterCalculadora  # Ruta al ejecutable generado por PyInstaller
