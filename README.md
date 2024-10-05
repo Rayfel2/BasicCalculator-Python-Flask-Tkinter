@@ -33,8 +33,82 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     ```
 3. Ejecuta el archivo de pruebas con el comando:
     ```bash
-    python -m unittest test_calculadora.py
+    python -m unittest test_calculator.py
     ```
+
+# BasicTkinterCalculator - CI QA Workflow
+Este repositorio implementa un flujo de trabajo de integración continua (CI) para verificar la calidad del código mediante la ejecución de pruebas unitarias en cada pull request hacia la rama qa. El objetivo es asegurar que el código funciona correctamente antes de ser integrado en el entorno de calidad (QA).
+
+# CI QA Workflow
+## Descripción
+El flujo de trabajo se ejecuta automáticamente cada vez que se crea o actualiza un pull request hacia la rama qa. Durante la ejecución, el sistema realiza las siguientes tareas:
+
+Descarga el código del repositorio.
+Configura el entorno de Python con la versión 3.8.
+Instala y actualiza las dependencias necesarias.
+Ejecuta las pruebas unitarias para verificar la funcionalidad del código.
+Si las pruebas fallan, sube los resultados de las fallas.
+
+## Configuración del Flujo de Trabajo
+````
+name: CI QA Workflow (BasicTkinterCalculator)
+
+on:
+  pull_request:
+    branches:
+      - qa
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run unit tests
+        run: |
+          python -m unittest test_calculator.py
+        continue-on-error: false
+
+      - name: Upload test results on failure
+        if: failure()
+        run: |
+          echo "Las pruebas fallaron. Subiendo los resultados..."
+
+
+````
+
+## Implementación del CD con Ejecutable
+Para la fase de Continuous Deployment (CD) del proyecto, se creo un ejecutable, El ejecutable fue generado utilizando la herramienta PyInstaller, que convierte los archivos .py en un ejecutable independiente que contiene todo lo necesario para ejecutar el programa. Esto elimina la necesidad de un intérprete de Python o dependencias externas en el sistema del usuario final.
+
+Pasos para Generar el Ejecutable
+Instalación de PyInstaller: Antes de crear el ejecutable, se debe instalar PyInstaller en el entorno de desarrollo. Para ello, se utiliza el siguiente comando:
+pip install pyinstaller
+Generación del Ejecutable: Una vez instalado PyInstaller, se procede a crear el ejecutable a partir del archivo principal de la calculadora (calculadora.py). El comando es el siguiente:
+pyinstaller --onefile calculadora.py
+
+Este proceso de creación del ejecutable se puede integrar en un pipeline de CD, donde, después de que el código haya pasado las pruebas unitarias y esté listo para su despliegue
+
+## Detalles Técnicos
+Plataforma: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
+Entorno Python: Se utiliza Python 3.8 para la ejecución del código.
+Dependencias: El flujo de trabajo asegura que pip está actualizado antes de ejecutar las pruebas.
+Pruebas Unitarias: Se ejecutan utilizando el módulo unittest en Python, evaluando el archivo test_calculator.py.
+Manejo de Fallos: Si las pruebas fallan, el proceso de CI se detendrá y subirá los resultados de las fallas.
+
+## Cómo Funciona
+Este flujo de trabajo es esencial para mantener la calidad del código en el proyecto. Automatiza el proceso de verificación antes de que cualquier cambio sea integrado en la rama qa, lo que ayuda a reducir el riesgo de introducir errores en el entorno de pruebas.
+
 
 ## Contribuidores
 - Rayfel Ogando (#1107535) - [Rayfel2](https://github.com/Rayfel2)
