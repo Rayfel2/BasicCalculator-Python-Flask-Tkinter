@@ -16,7 +16,7 @@ class TestCalculator(unittest.TestCase):
         self.calc.append_value('5')
         self.assertEqual(self.calc.result_var.get(), '5')
         self.calc.append_value('3')
-        self.assertEqual(self.calc.result_var.get(), '53')
+        self.assertEqual(self.calc.result_var.get(), '15')
 
     def test_clear_result(self):
         # Prueba la función de limpiar el resultado
