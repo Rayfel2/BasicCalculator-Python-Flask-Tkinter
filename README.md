@@ -88,7 +88,17 @@ jobs:
 
 ````
 
-## Para el CD se hizo un ejecutable.
+## Implementación del CD con Ejecutable
+Para la fase de Continuous Deployment (CD) del proyecto, se creo un ejecutable, El ejecutable fue generado utilizando la herramienta PyInstaller, que convierte los archivos .py en un ejecutable independiente que contiene todo lo necesario para ejecutar el programa. Esto elimina la necesidad de un intérprete de Python o dependencias externas en el sistema del usuario final.
+
+Pasos para Generar el Ejecutable
+Instalación de PyInstaller: Antes de crear el ejecutable, se debe instalar PyInstaller en el entorno de desarrollo. Para ello, se utiliza el siguiente comando:
+pip install pyinstaller
+Generación del Ejecutable: Una vez instalado PyInstaller, se procede a crear el ejecutable a partir del archivo principal de la calculadora (calculadora.py). El comando es el siguiente:
+pyinstaller --onefile calculadora.py
+
+Este proceso de creación del ejecutable se puede integrar en un pipeline de CD, donde, después de que el código haya pasado las pruebas unitarias y esté listo para su despliegue
+
 ## Detalles Técnicos
 Plataforma: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
 Entorno Python: Se utiliza Python 3.8 para la ejecución del código.
