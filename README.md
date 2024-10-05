@@ -50,43 +50,7 @@ Ejecuta las pruebas unitarias para verificar la funcionalidad del código.
 Si las pruebas fallan, sube los resultados de las fallas.
 
 ## Configuración del Flujo de Trabajo
-````
-name: CI QA Workflow (BasicTkinterCalculator)
-
-on:
-  pull_request:
-    branches:
-      - qa
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-
-      - name: Run unit tests
-        run: |
-          python -m unittest test_calculator.py
-        continue-on-error: false
-
-      - name: Upload test results on failure
-        if: failure()
-        run: |
-          echo "Las pruebas fallaron. Subiendo los resultados..."
-
-
-````
+El flujo de trabajo de integración continua (CI) se activa cuando se crea o actualiza un pull request hacia la rama qa. El proceso se ejecuta en un entorno de Ubuntu y consta de varios pasos: primero, se realiza la verificación del código fuente del repositorio; luego, se configura el entorno de Python con la versión 3.8. A continuación, se instalan las dependencias necesarias, y se ejecutan pruebas unitarias para verificar el correcto funcionamiento de la aplicación. Si alguna de las pruebas falla, se genera un mensaje indicando que las pruebas no pasaron, lo que permite a los desarrolladores identificar y solucionar problemas antes de fusionar los cambios en la rama principal.
 
 ## Implementación del CD con Ejecutable
 Para la fase de Continuous Deployment (CD) del proyecto, se creo un ejecutable, El ejecutable fue generado utilizando la herramienta PyInstaller, que convierte los archivos .py en un ejecutable independiente que contiene todo lo necesario para ejecutar el programa. Esto elimina la necesidad de un intérprete de Python o dependencias externas en el sistema del usuario final.
