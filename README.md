@@ -36,11 +36,11 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     python -m unittest test_calculator.py
     ```
 
-BasicTkinterCalculator - CI QA Workflow
+# BasicTkinterCalculator - CI QA Workflow
 Este repositorio implementa un flujo de trabajo de integración continua (CI) para verificar la calidad del código mediante la ejecución de pruebas unitarias en cada pull request hacia la rama qa. El objetivo es asegurar que el código funciona correctamente antes de ser integrado en el entorno de calidad (QA).
 
-CI QA Workflow
-Descripción
+# CI QA Workflow
+## Descripción
 El flujo de trabajo se ejecuta automáticamente cada vez que se crea o actualiza un pull request hacia la rama qa. Durante la ejecución, el sistema realiza las siguientes tareas:
 
 Descarga el código del repositorio.
@@ -48,7 +48,8 @@ Configura el entorno de Python con la versión 3.8.
 Instala y actualiza las dependencias necesarias.
 Ejecuta las pruebas unitarias para verificar la funcionalidad del código.
 Si las pruebas fallan, sube los resultados de las fallas.
-Configuración del Flujo de Trabajo
+
+## Configuración del Flujo de Trabajo
 name: CI QA Workflow (BasicTkinterCalculator)
 
 on:
@@ -82,13 +83,15 @@ jobs:
         if: failure()
         run: |
           echo "Las pruebas fallaron. Subiendo los resultados..."
-Detalles Técnicos
+          
+## Detalles Técnicos
 Plataforma: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
 Entorno Python: Se utiliza Python 3.8 para la ejecución del código.
 Dependencias: El flujo de trabajo asegura que pip está actualizado antes de ejecutar las pruebas.
 Pruebas Unitarias: Se ejecutan utilizando el módulo unittest en Python, evaluando el archivo test_calculator.py.
 Manejo de Fallos: Si las pruebas fallan, el proceso de CI se detendrá y subirá los resultados de las fallas.
-Cómo Funciona
+
+## Cómo Funciona
 Este flujo de trabajo es esencial para mantener la calidad del código en el proyecto. Automatiza el proceso de verificación antes de que cualquier cambio sea integrado en la rama qa, lo que ayuda a reducir el riesgo de introducir errores en el entorno de pruebas.
 
 
