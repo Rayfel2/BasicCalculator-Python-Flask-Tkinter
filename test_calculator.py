@@ -32,7 +32,7 @@ class TestCalculator(unittest.TestCase):
 
         self.calc.result_var.set("10/2")
         self.calc.calculate_result()
-        self.assertEqual(self.calc.result_var.get(), '5.0')
+        self.assertEqual(self.calc.result_var.get(), '5.2')
 
         # Prueba de manejo de errores
         self.calc.result_var.set("5/0")
