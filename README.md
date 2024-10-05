@@ -50,6 +50,7 @@ Ejecuta las pruebas unitarias para verificar la funcionalidad del código.
 Si las pruebas fallan, sube los resultados de las fallas.
 
 ## Configuración del Flujo de Trabajo
+````
 name: CI QA Workflow (BasicTkinterCalculator)
 
 on:
@@ -83,7 +84,9 @@ jobs:
         if: failure()
         run: |
           echo "Las pruebas fallaron. Subiendo los resultados..."
-          
+
+
+````  
 ## Detalles Técnicos
 Plataforma: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
 Entorno Python: Se utiliza Python 3.8 para la ejecución del código.
