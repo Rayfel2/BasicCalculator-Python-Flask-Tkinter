@@ -45,7 +45,7 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     ```bash
     python app.py
     ```
-5. Abre tu navegador web y accede a `http://127.0.0.1:5000` para utilizar la calculadora web de manera local. Vas a obtener esta página: https://www.intec.edu.do/
+5. Abre tu navegador web y accede a `http://127.0.0.1:5000` para utilizar la calculadora web de manera local. Vas a obtener esta página: [BasicTkinterCalculator](https://basic-tkinter-calculator.vercel.app/)
 
 ## Cómo Correr el Comando de Pruebas
 1. Asegúrate de tener Python instalado en tu sistema.
