@@ -1,4 +1,4 @@
-# BasicCalculator
+# BasicTkinterCalculator
 
 ## Descripción
 Este es un proyecto de calculadoras que incluye una calculadora básica de escritorio desarrollada en Python utilizando la biblioteca Tkinter para la interfaz gráfica de usuario y una calculadora web construida con Flask. Ambas calculadoras permiten realizar operaciones matemáticas básicas como suma, resta, multiplicación y división.
@@ -21,7 +21,7 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     ```
 3. Navega al directorio del proyecto:
     ```bash
-    BasicTkinterCalculator
+    cd BasicTkinterCalculator
     ```
 4. Ejecuta el archivo principal de la calculadora de escritorio:
     ```bash
@@ -45,7 +45,7 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     ```bash
     python app.py
     ```
-5. Abre tu navegador web y accede a `http://127.0.0.1:5000` para utilizar la calculadora web de manera local. Vas obtener una pagina parecida a esta https://www.intec.edu.do/
+5. Abre tu navegador web y accede a `http://127.0.0.1:5000` para utilizar la calculadora web de manera local. Vas a obtener esta página: https://www.intec.edu.do/
 
 ## Cómo Correr el Comando de Pruebas
 1. Asegúrate de tener Python instalado en tu sistema.
@@ -58,6 +58,24 @@ Este proyecto no utiliza una base de datos, por lo que esta sección no aplica.
     python -m unittest test_calculator.py
     ```
 
+## Estilo de Código
+Para mantener la calidad del código, se está utilizando **Flake8** para verificar el estilo y las normas de codificación.
+
+```bash
+#!/bin/sh
+FILES=$(git diff --cached --name-only --diff-filter=ACM)
+echo "Ejecutando linting..."
+for FILE in $FILES; do
+    if [[ "$FILE" =~ \.py$ ]]; then  # Cambie a .py para archivos de Python
+        flake8 "$FILE"  # Cambie a flake8 que es una librería de python
+        if [ $? -ne 0 ]; then
+            echo "Errores de linting encontrados en el archivo $FILE. Commit abortado."
+            exit 1
+        fi
+    fi
+done
+exit 0
+```
 # CI QA Workflow - BasicTkinterCalculator
 Este repositorio implementa un flujo de trabajo de integración continua (CI) para verificar la calidad del código mediante la ejecución de pruebas unitarias en cada pull request hacia la rama qa. El objetivo es asegurar que el código funciona correctamente antes de ser integrado en el entorno de calidad (QA).
 
@@ -74,7 +92,11 @@ El flujo de trabajo se ejecuta automáticamente cada vez que se crea o actualiza
 ## Configuración del Flujo de Trabajo
 El flujo de trabajo de integración continua (CI) se activa cuando se crea o actualiza un pull request hacia la rama qa. El proceso se ejecuta en un entorno de Ubuntu y consta de varios pasos: primero, se realiza la verificación del código fuente del repositorio; luego, se configura el entorno de Python con la versión 3.8. A continuación, se instalan las dependencias necesarias, y se ejecutan pruebas unitarias para verificar el correcto funcionamiento de la aplicación. Si alguna de las pruebas falla, se genera un mensaje indicando que las pruebas no pasaron, lo que permite a los desarrolladores identificar y solucionar problemas antes de fusionar los cambios en la rama principal.
 
-## Implementación del CD con Ejecutable
+## Implementación del CD con Vercel
+Para la fase de Continuous Deployment (CD) del proyecto, la calculadora web se desplegará utilizando Vercel, una plataforma que facilita el despliegue de aplicaciones web. Vercel permite realizar despliegues automáticos cada vez que se realiza un push a la rama principal del repositorio. Esto asegura que cualquier cambio en el código se refleje inmediatamente en el entorno de producción, garantizando así que los usuarios siempre tengan acceso a la versión más reciente de la aplicación.
+
+
+## Implementación del CD del Ejecutable
 Para la fase de Continuous Deployment (CD) del proyecto, se creó un ejecutable. El ejecutable fue generado utilizando la herramienta PyInstaller, que convierte los archivos .py en un ejecutable independiente que contiene todo lo necesario para ejecutar el programa. Esto elimina la necesidad de un intérprete de Python o dependencias externas en el sistema del usuario final.
 
 ### Pasos para Generar el Ejecutable
