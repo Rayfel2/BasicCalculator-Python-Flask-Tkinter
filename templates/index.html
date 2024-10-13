@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 400px; /* Ajustar el ancho */
+            padding: 20px;
+        }
+
+        #result {
+            font-size: 32px; /* Aumentar el tamaño del texto */
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            text-align: right;
+            background-color: #e6e6e6;
+            margin-bottom: 20px;
+            height: 60px; /* Ajustar la altura */
+        }
+
+        .button {
+            width: 90px; /* Ajustar el ancho */
+            height: 90px; /* Ajustar la altura */
+            font-size: 24px; /* Tamaño de fuente */
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #f9f9f9; /* Color de fondo para los botones */
+        }
+
+        .button:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .operator {
+            background-color: #f0ad4e; /* Color de fondo para los operadores */
+        }
+
+        .clear {
+            background-color: #d9534f; /* Color de fondo para el botón C */
+            color: white;
+        }
+
+        .equals {
+            background-color: #5cb85c; /* Color de fondo para el botón = */
+            color: white;
+        }
+
+        .button:active {
+            background-color: #007BFF; /* Color de fondo cuando se presiona */
+            transform: scale(0.95); /* Efecto de presión */
+        }
+    </style>
+    <script>
+        function updateDisplay(value) {
+            const display = document.getElementById("result");
+            display.innerHTML += value;
+            document.getElementById("current_input").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("current_input").value = "";
+        }
+
+        function calculate() {
+            const form = document.getElementById("calculatorForm");
+            const resultField = document.getElementById("result");
+            const currentInput = document.getElementById("current_input").value;
+
+            fetch("/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    action: "calculate",
+                    value: "",
+                    current_input: currentInput
+                })
+            })
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, "text/html");
+                resultField.innerHTML = doc.getElementById("result").innerHTML;
+                document.getElementById("current_input").value = doc.getElementById("current_input").value;
+            });
+        }
+
+        // Llamar a clearDisplay cuando se carga la página
+        window.onload = function() {
+            clearDisplay();
+        }
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <div id="result">{{ current_input if current_input else '0' }}</div>
+        <form id="calculatorForm" method="POST" onsubmit="return false;">
+            <input type="hidden" id="current_input" name="current_input" value="{{ current_input }}">
+            <div style="display: flex; flex-wrap: wrap;">
+                <button type="button" class="button" onclick="updateDisplay('7')">7</button>
+                <button type="button" class="button" onclick="updateDisplay('8')">8</button>
+                <button type="button" class="button" onclick="updateDisplay('9')">9</button>
+                <button type="button" class="button operator" onclick="updateDisplay('/')">/</button>
+                <button type="button" class="button" onclick="updateDisplay('4')">4</button>
+                <button type="button" class="button" onclick="updateDisplay('5')">5</button>
+                <button type="button" class="button" onclick="updateDisplay('6')">6</button>
+                <button type="button" class="button operator" onclick="updateDisplay('*')">*</button>
+                <button type="button" class="button" onclick="updateDisplay('1')">1</button>
+                <button type="button" class="button" onclick="updateDisplay('2')">2</button>
+                <button type="button" class="button" onclick="updateDisplay('3')">3</button>
+                <button type="button" class="button operator" onclick="updateDisplay('-')">-</button>
+                <button type="button" class="button" onclick="updateDisplay('0')">0</button>
+                <button type="button" class="button clear" onclick="clearDisplay()">C</button>
+                <button type="button" class="button equals" onclick="calculate()">=</button>
+                <button type="button" class="button operator" onclick="updateDisplay('+')">+</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

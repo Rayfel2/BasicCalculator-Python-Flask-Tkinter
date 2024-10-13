@@ -21,13 +21,14 @@ jobs:
       - name: Install dependencies  # Instalar dependencias
         run: |
           python -m pip install --upgrade pip  # Actualiza 'pip'
+          pip install Flask  # Instala Flask para la app web
           pip install pyinstaller  # Instala PyInstaller para empaquetar la app
 
       - name: Run Xvfb and unit tests  # Ejecutar Xvfb y las pruebas unitarias
         run: |
           Xvfb :99 -screen 0 1024x768x24 &
           export DISPLAY=:99
-          python -m unittest test_calculator.py  # Ejecuta las pruebas unitarias en el archivo 'test_calculator.py'
+          python -m unittest discover  # Ejecuta todas las pruebas unitarias en el directorio
         continue-on-error: false
 
       - name: Upload test results on failure  # Manejo de fallos en las pruebas
