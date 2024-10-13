@@ -1,5 +1,5 @@
 # BasicTkinterCalculator
-
+---
 ## Descripción
 Este es un proyecto de calculadoras que incluye una calculadora básica de escritorio desarrollada en Python utilizando la biblioteca Tkinter para la interfaz gráfica de usuario y una calculadora web construida con Flask. Ambas calculadoras permiten realizar operaciones matemáticas básicas como suma, resta, multiplicación y división.
 
@@ -108,8 +108,6 @@ Para la fase de Continuous Deployment (CD) del proyecto, se creó un ejecutable.
     ```bash
     pyinstaller --onefile TkinterCalculadora.py
     ```
-
-Este proceso de creación del ejecutable se puede integrar en un pipeline de CD, donde, después de que el código haya pasado las pruebas unitarias y esté listo para su despliegue.
 
 ## Detalles Técnicos
 - **Plataforma**: El flujo de trabajo se ejecuta en la versión más reciente de Ubuntu.
